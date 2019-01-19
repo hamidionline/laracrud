@@ -1,0 +1,13 @@
+<h1>{{uc_resource_plural}}</h1>
+<a href="{{ route('{{resource_plural}}.create') }}">Create new {{resource}}</a>
+<ul>
+    @forelse (${{resource_plural}} as ${{resource}})
+        <li>
+            <a href="{{ route('{{resource_plural}}.show', ${{resource}}) }}">
+                {{ ${{resource}}->id }}
+            </a>
+        </li>
+    @empty
+        <li>No {{uc_resource_plural}} to show.</li>
+    @endforelse
+</ul>

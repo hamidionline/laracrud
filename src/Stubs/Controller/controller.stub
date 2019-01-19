@@ -1,0 +1,111 @@
+<?php
+
+namespace {{namespace}}Http\Controllers;
+
+use App\{{uc_resource}};
+use Illuminate\Http\Request;
+
+class {{uc_resource_plural}}Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        ${{resource_plural}} = {{uc_resource}}::all();
+
+        return view('{{resource_plural}}.index', compact('{{resource_plural}}'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('{{resource_plural}}.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $attritutes = request()->validate(['*']);
+
+        {{uc_resource}}::create($attritutes);
+
+        return redirect()
+            ->route('{{resource_plural}}.index')
+            ->withStatus('{{uc_resource}} created.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\{{uc_resource}}  ${{resource}}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{uc_resource}} ${{resource}}) 
+    {
+        return view('{{resource_plural}}.show', compact('{{resource}}'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\{{uc_resource}}  ${{resource}}
+     * @return \Illuminate\Http\Response
+     */
+    public function edit({{uc_resource}} ${{resource}})
+    {
+        return view('{{resource_plural}}.edit', compact('{{resource}}'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\{{uc_resource}}  ${{resource}}
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, {{uc_resource}} ${{resource}})
+    {
+        $attritutes = request()->validate(['*']);
+
+        if (!${{resource}}->update($attritutes)) {
+            return redirect()
+                ->route('{{resource_plural}}.edit', compact('{{resource}}'))
+                ->withError('{{uc_resource}} could not be updated.');
+        } else {
+            return redirect()
+                ->route('{{resource_plural}}.show', compact('{{resource}}'))
+                ->withStatus('{{uc_resource}} has been updated.');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\{{uc_resource}}  ${{resource}}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{uc_resource}} ${{resource}})
+    {
+        if (!${{resource}}->delete()) {
+            return redirect()
+                ->route('{{resource_plural}}.edit', compact('{{resource}}'))
+                ->withError('{{uc_resource}} could not be deleted.');
+        } else {
+            return redirect()
+                ->route('{{resource_plural}}.index')
+                ->withStatus('{{uc_resource}} has been deleted.');
+        }
+    }
+}

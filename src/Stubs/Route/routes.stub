@@ -1,0 +1,2 @@
+
+Route::resource('{{resource_plural}}', '{{uc_resource_plural}}Controller');

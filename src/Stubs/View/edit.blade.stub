@@ -1,0 +1,6 @@
+<h1>Edit {{uc_resource}}</h1>
+<form action="{{ route('{{resource_plural}}.update', ${{resource}}) }}" method="POST">
+    @csrf
+    @method('PUT')
+    <button>Update</button>
+</form>

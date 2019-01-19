@@ -1,0 +1,7 @@
+<h1>{{ ${{resource}}->id }}</h1>
+<form action="{{ route('{{resource_plural}}.destroy', ${{resource}}) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button>Delete</button>
+</form>
+<a href="{{ route('{{resource_plural}}.edit', ${{resource}}) }}">Edit</a>

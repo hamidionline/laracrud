@@ -1,0 +1,5 @@
+<h1>Create {{uc_resource}}</h1>
+<form action="{{ route('{{resource_plural}}.store') }}" method="POST">
+    @csrf
+    <button>Create</button>
+</form>
