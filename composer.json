@@ -1,7 +1,6 @@
 {
     "name": "heyatalent/laracrud",
     "description": "A CRUD generator for Laravel",
-    "type": "library",
     "license": "MIT",
     "authors": [
         {
@@ -9,9 +8,19 @@
             "email": "linus.juhlin@heyatalent.com"
         }
     ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "HeyaTalent\\LaraCRUD\\ServiceProvider"
+            ]
+        }
+    },
     "autoload": {
         "psr-4": {
-            "HeyaTalent\\LaraCRUD\\": "src"
+            "HeyaTalent\\LaraCRUD\\": "src/"
         }
+    },
+    "require-dev": {
+        "laravel/framework": "5.5.x"
     }
 }
