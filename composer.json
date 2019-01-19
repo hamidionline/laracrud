@@ -1,0 +1,17 @@
+{
+    "name": "heyatalent/laracrud",
+    "description": "A CRUD generator for Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Linus Juhlin",
+            "email": "linus.juhlin@heyatalent.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "HeyaTalent\\LaraCRUD\\": "src"
+        }
+    }
+}
